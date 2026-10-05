@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Programming Skill Assessment</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Programming Skill Assessment</h1>
+
+        <p>Enter your details to start the skill test.</p>
+
+        <form id="studentForm">
+
+            <label>Name</label>
+            <input type="text" id="name" required>
+
+            <label>Register Number</label>
+            <input type="text" id="registerNo" required>
+
+            <label>Department</label>
+            <select id="department" required>
+                <option value="">Select Department</option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+                <option value="IT">IT</option>
+            </select>
+
+            <label>Year</label>
+            <select id="year" required>
+                <option value="">Select Year</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+            </select>
+
+            <label>Programming Language</label>
+            <select id="language" required>
+                <option value="">Select Language</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+            </select>
+
+            <button type="submit" id="startButton">
+                Start Skill Test
+            </button>
+
+        </form>
+
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
