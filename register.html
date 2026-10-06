@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Registration</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="registration-page">
+
+    <div class="registration-card">
+
+        <div class="registration-icon">
+            👋
+        </div>
+
+        <h1>
+            Student Registration
+        </h1>
+
+        <p class="registration-subtitle">
+            Enter your details to start your programming skill assessment.
+        </p>
+
+
+        <form
+            id="registrationForm"
+            action="language.html"
+            method="get"
+        >
+
+            <div class="input-group">
+
+                <label for="studentName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="studentName"
+                    name="studentName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="registerNo">
+                    Register Number
+                </label>
+
+                <input
+                    type="text"
+                    id="registerNo"
+                    name="registerNo"
+                    placeholder="Enter your register number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="department">
+                    Department
+                </label>
+
+                <select
+                    id="department"
+                    name="department"
+                    required
+                >
+
+                    <option value="">
+                        Select Department
+                    </option>
+
+                    <option value="CSE">
+                        Computer Science and Engineering
+                    </option>
+
+                    <option value="ECE">
+                        Electronics and Communication Engineering
+                    </option>
+
+                    <option value="EEE">
+                        Electrical and Electronics Engineering
+                    </option>
+
+                    <option value="IT">
+                        Information Technology
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="year">
+                    Year of Study
+                </label>
+
+                <select
+                    id="year"
+                    name="year"
+                    required
+                >
+
+                    <option value="">
+                        Select Year
+                    </option>
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+                    <option value="4th Year">
+                        4th Year
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="continue-button"
+            >
+
+                Continue
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+        </form>
+
+
+        <p class="registration-note">
+
+            🔒 Your details are stored locally for this assessment.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function () {
+
+            const studentDetails = {
+
+                name: document
+                    .getElementById("studentName")
+                    .value
+                    .trim(),
+
+                registerNo: document
+                    .getElementById("registerNo")
+                    .value
+                    .trim(),
+
+                department: document
+                    .getElementById("department")
+                    .value,
+
+                year: document
+                    .getElementById("year")
+                    .value
+
+            };
+
+
+            localStorage.setItem(
+                "studentDetails",
+                JSON.stringify(studentDetails)
+            );
+
+        });
+
+</script>
+```
+
+</body>
+
+</html>

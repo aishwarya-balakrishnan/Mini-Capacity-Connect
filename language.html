@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Select Programming Language</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="language-page">
+
+    <div class="language-wrapper">
+
+
+        <!-- PAGE HEADER -->
+
+        <div class="language-header">
+
+            <div class="language-icon">
+                💻
+            </div>
+
+            <h1>
+                Choose Your Programming Language
+            </h1>
+
+            <p>
+                Select a programming language to start your skill assessment.
+            </p>
+
+        </div>
+
+
+        <!-- STUDENT DETAILS -->
+
+        <div class="student-mini-card">
+
+            <div class="student-details-left">
+
+                <div class="student-mini-name" id="studentNameDisplay">
+                    Student Name
+                </div>
+
+                <div class="student-mini-details">
+
+                    <span id="studentRegisterDisplay">
+                        Register Number
+                    </span>
+
+                    <span>
+                        •
+                    </span>
+
+                    <span id="studentDepartmentDisplay">
+                        Department
+                    </span>
+
+                    <span>
+                        •
+                    </span>
+
+                    <span id="studentYearDisplay">
+                        Year
+                    </span>
+
+                </div>
+
+            </div>
+
+            <div class="student-icon">
+                🎓
+            </div>
+
+        </div>
+
+
+        <!-- LANGUAGE SECTION -->
+
+        <div class="language-selection">
+
+            <h2>
+                Select Language
+            </h2>
+
+            <p>
+                Choose the language you want to test.
+            </p>
+
+        </div>
+
+
+        <!-- LANGUAGE CARDS -->
+
+        <div class="language-grid">
+
+
+            <!-- PYTHON -->
+
+            <div
+                class="language-card"
+                data-language="Python"
+            >
+
+                <div class="language-logo">
+                    🐍
+                </div>
+
+                <h2>
+                    Python
+                </h2>
+
+                <p>
+                    Test your Python programming skills
+                </p>
+
+            </div>
+
+
+            <!-- JAVA -->
+
+            <div
+                class="language-card"
+                data-language="Java"
+            >
+
+                <div class="language-logo">
+                    ☕
+                </div>
+
+                <h2>
+                    Java
+                </h2>
+
+                <p>
+                    Test your Java programming skills
+                </p>
+
+            </div>
+
+
+            <!-- C -->
+
+            <div
+                class="language-card"
+                data-language="C"
+            >
+
+                <div class="language-logo">
+                    🔵
+                </div>
+
+                <h2>
+                    C
+                </h2>
+
+                <p>
+                    Test your C programming skills
+                </p>
+
+            </div>
+
+
+            <!-- C++ -->
+
+            <div
+                class="language-card"
+                data-language="C++"
+            >
+
+                <div class="language-logo">
+                    ⚙️
+                </div>
+
+                <h2>
+                    C++
+                </h2>
+
+                <p>
+                    Test your C++ programming skills
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- START TEST BUTTON -->
+
+        <button
+            type="button"
+            class="language-start"
+            id="languageStartButton"
+            disabled
+        >
+
+            Start Test
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+        <p
+            class="language-message"
+            id="languageMessage"
+        >
+            Please select a programming language.
+        </p>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        /* ==========================================
+           GET STUDENT DETAILS
+        ========================================== */
+
+        const savedDetails =
+            localStorage.getItem("studentDetails");
+
+
+        if (!savedDetails) {
+
+            window.location.href = "register.html";
+
+            return;
+
+        }
+
+
+        const studentDetails =
+            JSON.parse(savedDetails);
+
+
+        document.getElementById(
+            "studentNameDisplay"
+        ).textContent =
+            studentDetails.name || "Student Name";
+
+
+        document.getElementById(
+            "studentRegisterDisplay"
+        ).textContent =
+            studentDetails.registerNo || "Register Number";
+
+
+        document.getElementById(
+            "studentDepartmentDisplay"
+        ).textContent =
+            studentDetails.department || "Department";
+
+
+        document.getElementById(
+            "studentYearDisplay"
+        ).textContent =
+            studentDetails.year || "Year";
+
+
+        /* ==========================================
+           LANGUAGE SELECTION
+        ========================================== */
+
+        const languageCards =
+            document.querySelectorAll(".language-card");
+
+        const startButton =
+            document.getElementById("languageStartButton");
+
+        const message =
+            document.getElementById("languageMessage");
+
+
+        let selectedLanguage = "";
+
+
+        languageCards.forEach(function (card) {
+
+            card.addEventListener("click", function () {
+
+
+                /* Remove previous selection */
+
+                languageCards.forEach(function (item) {
+
+                    item.classList.remove("selected");
+
+                });
+
+
+                /* Select current language */
+
+                card.classList.add("selected");
+
+
+                selectedLanguage =
+                    card.getAttribute("data-language");
+
+
+                /* Save selected language */
+
+                localStorage.setItem(
+                    "selectedLanguage",
+                    selectedLanguage
+                );
+
+
+                /* Enable Start Test button */
+
+                startButton.disabled = false;
+
+
+                startButton.classList.add("active");
+
+
+                message.textContent =
+                    selectedLanguage +
+                    " selected. Click Start Test.";
+
+            });
+
+        });
+
+
+        /* ==========================================
+           START TEST
+        ========================================== */
+
+        startButton.addEventListener(
+            "click",
+            function () {
+
+
+                if (selectedLanguage === "") {
+
+                    message.textContent =
+                        "Please select a programming language.";
+
+                    return;
+
+                }
+
+
+                localStorage.setItem(
+                    "selectedLanguage",
+                    selectedLanguage
+                );
+
+
+                window.location.href =
+                    "skill-test.html";
+
+            }
+        );
+
+
+    });
+
+</script>
+```
+
+</body>
+
+</html>

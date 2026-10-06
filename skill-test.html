@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Programming Skill Test</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="test-page">
+
+    <div class="test-container">
+
+
+        <!-- HEADER -->
+
+        <div class="test-header">
+
+            <div class="test-icon">
+                📝
+            </div>
+
+            <h1>
+
+                <span id="testLanguage">
+                    Programming
+                </span>
+
+                Skill Test
+
+            </h1>
+
+            <p>
+                Answer all the questions and submit your test.
+            </p>
+
+        </div>
+
+
+        <!-- STUDENT INFORMATION -->
+
+        <div class="student-info">
+
+            <div class="student-test-item">
+
+                <strong>
+                    Student
+                </strong>
+
+                <span id="testStudentName">
+                    Student Name
+                </span>
+
+            </div>
+
+
+            <div class="student-test-item">
+
+                <strong>
+                    Register Number
+                </strong>
+
+                <span id="testRegisterNo">
+                    Register Number
+                </span>
+
+            </div>
+
+
+            <div class="student-test-item">
+
+                <strong>
+                    Department
+                </strong>
+
+                <span id="testDepartment">
+                    Department
+                </span>
+
+            </div>
+
+
+            <div class="student-test-item">
+
+                <strong>
+                    Language
+                </strong>
+
+                <span id="testLanguageInfo">
+                    Programming
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- TEST FORM -->
+
+        <form id="skillTestForm">
+
+
+            <!-- QUESTIONS WILL BE LOADED HERE -->
+
+            <div id="questionsContainer"></div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-test-button"
+            >
+
+                Submit Test
+
+                <span>
+                    →
+                </span>
+
+            </button>
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        /* ==========================================
+           GET STUDENT DETAILS
+        ========================================== */
+
+        const savedDetails =
+            localStorage.getItem("studentDetails");
+
+
+        const selectedLanguage =
+            localStorage.getItem("selectedLanguage");
+
+
+        /* ==========================================
+           CHECK DATA
+        ========================================== */
+
+        if (!savedDetails) {
+
+            window.location.href =
+                "register.html";
+
+            return;
+
+        }
+
+
+        if (!selectedLanguage) {
+
+            window.location.href =
+                "language.html";
+
+            return;
+
+        }
+
+
+        const studentDetails =
+            JSON.parse(savedDetails);
+
+
+        /* ==========================================
+           DISPLAY STUDENT DETAILS
+        ========================================== */
+
+        document.getElementById(
+            "testStudentName"
+        ).textContent =
+            studentDetails.name;
+
+
+        document.getElementById(
+            "testRegisterNo"
+        ).textContent =
+            studentDetails.registerNo;
+
+
+        document.getElementById(
+            "testDepartment"
+        ).textContent =
+            studentDetails.department;
+
+
+        document.getElementById(
+            "testLanguage"
+        ).textContent =
+            selectedLanguage;
+
+
+        document.getElementById(
+            "testLanguageInfo"
+        ).textContent =
+            selectedLanguage;
+
+
+        /* ==========================================
+           QUESTIONS
+        ========================================== */
+
+        const questions = {
+
+
+            Python: [
+
+                {
+                    question:
+                        "Which keyword is used to define a function in Python?",
+
+                    options: [
+                        "function",
+                        "def",
+                        "fun",
+                        "define"
+                    ],
+
+                    answer: "def"
+                },
+
+
+                {
+                    question:
+                        "Which symbol is used for comments in Python?",
+
+                    options: [
+                        "//",
+                        "/* */",
+                        "#",
+                        "<!-- -->"
+                    ],
+
+                    answer: "#"
+                },
+
+
+                {
+                    question:
+                        "Which data type is used to store True or False?",
+
+                    options: [
+                        "int",
+                        "string",
+                        "bool",
+                        "float"
+                    ],
+
+                    answer: "bool"
+                },
+
+
+                {
+                    question:
+                        "Which function is used to display output in Python?",
+
+                    options: [
+                        "display()",
+                        "print()",
+                        "show()",
+                        "output()"
+                    ],
+
+                    answer: "print()"
+                },
+
+
+                {
+                    question:
+                        "Which collection is ordered and changeable?",
+
+                    options: [
+                        "tuple",
+                        "set",
+                        "list",
+                        "string"
+                    ],
+
+                    answer: "list"
+                },
+
+
+                {
+                    question:
+                        "Which operator is used for exponentiation in Python?",
+
+                    options: [
+                        "^",
+                        "**",
+                        "//",
+                        "%%"
+                    ],
+
+                    answer: "**"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to create a class?",
+
+                    options: [
+                        "object",
+                        "class",
+                        "define",
+                        "struct"
+                    ],
+
+                    answer: "class"
+                },
+
+
+                {
+                    question:
+                        "Which function returns the length of a list?",
+
+                    options: [
+                        "size()",
+                        "length()",
+                        "count()",
+                        "len()"
+                    ],
+
+                    answer: "len()"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used for a loop over a sequence?",
+
+                    options: [
+                        "repeat",
+                        "for",
+                        "loop",
+                        "iterate"
+                    ],
+
+                    answer: "for"
+                },
+
+
+                {
+                    question:
+                        "Which value represents an empty value in Python?",
+
+                    options: [
+                        "empty",
+                        "null",
+                        "None",
+                        "void"
+                    ],
+
+                    answer: "None"
+                }
+
+            ],
+
+
+            Java: [
+
+                {
+                    question:
+                        "Which keyword is used to create a class in Java?",
+
+                    options: [
+                        "class",
+                        "struct",
+                        "define",
+                        "object"
+                    ],
+
+                    answer: "class"
+                },
+
+
+                {
+                    question:
+                        "Which method is the starting point of a Java program?",
+
+                    options: [
+                        "start()",
+                        "run()",
+                        "main()",
+                        "execute()"
+                    ],
+
+                    answer: "main()"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to inherit a class?",
+
+                    options: [
+                        "implements",
+                        "extends",
+                        "inherits",
+                        "super"
+                    ],
+
+                    answer: "extends"
+                },
+
+
+                {
+                    question:
+                        "Which data type stores true or false?",
+
+                    options: [
+                        "boolean",
+                        "bool",
+                        "bit",
+                        "logical"
+                    ],
+
+                    answer: "boolean"
+                },
+
+
+                {
+                    question:
+                        "Which symbol ends a Java statement?",
+
+                    options: [
+                        ":",
+                        ".",
+                        ";",
+                        ","
+                    ],
+
+                    answer: ";"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to create an object?",
+
+                    options: [
+                        "create",
+                        "object",
+                        "new",
+                        "make"
+                    ],
+
+                    answer: "new"
+                },
+
+
+                {
+                    question:
+                        "Which keyword prevents a class from being inherited?",
+
+                    options: [
+                        "static",
+                        "private",
+                        "final",
+                        "const"
+                    ],
+
+                    answer: "final"
+                },
+
+
+                {
+                    question:
+                        "Which package contains Scanner class?",
+
+                    options: [
+                        "java.io",
+                        "java.util",
+                        "java.lang",
+                        "java.net"
+                    ],
+
+                    answer: "java.util"
+                },
+
+
+                {
+                    question:
+                        "Which concept allows multiple methods with the same name?",
+
+                    options: [
+                        "Inheritance",
+                        "Encapsulation",
+                        "Overloading",
+                        "Abstraction"
+                    ],
+
+                    answer: "Overloading"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to handle exceptions?",
+
+                    options: [
+                        "try",
+                        "check",
+                        "error",
+                        "handle"
+                    ],
+
+                    answer: "try"
+                }
+
+            ],
+
+
+            C: [
+
+                {
+                    question:
+                        "Which function is the starting point of a C program?",
+
+                    options: [
+                        "start()",
+                        "main()",
+                        "begin()",
+                        "run()"
+                    ],
+
+                    answer: "main()"
+                },
+
+
+                {
+                    question:
+                        "Which symbol is used for a single-line comment in C?",
+
+                    options: [
+                        "#",
+                        "//",
+                        "<!--",
+                        "**"
+                    ],
+
+                    answer: "//"
+                },
+
+
+                {
+                    question:
+                        "Which header file is used for printf()?",
+
+                    options: [
+                        "stdlib.h",
+                        "string.h",
+                        "stdio.h",
+                        "math.h"
+                    ],
+
+                    answer: "stdio.h"
+                },
+
+
+                {
+                    question:
+                        "Which data type stores a single character?",
+
+                    options: [
+                        "string",
+                        "char",
+                        "character",
+                        "text"
+                    ],
+
+                    answer: "char"
+                },
+
+
+                {
+                    question:
+                        "Which operator is used to get the address of a variable?",
+
+                    options: [
+                        "*",
+                        "&",
+                        "#",
+                        "@"
+                    ],
+
+                    answer: "&"
+                },
+
+
+                {
+                    question:
+                        "Which loop executes at least once?",
+
+                    options: [
+                        "for",
+                        "while",
+                        "do-while",
+                        "if"
+                    ],
+
+                    answer: "do-while"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to declare a constant variable?",
+
+                    options: [
+                        "constant",
+                        "const",
+                        "fixed",
+                        "final"
+                    ],
+
+                    answer: "const"
+                },
+
+
+                {
+                    question:
+                        "Which function is used to read formatted input?",
+
+                    options: [
+                        "input()",
+                        "read()",
+                        "scanf()",
+                        "get()"
+                    ],
+
+                    answer: "scanf()"
+                },
+
+
+                {
+                    question:
+                        "Which symbol is used to access a structure member?",
+
+                    options: [
+                        ".",
+                        "->",
+                        ":",
+                        "#"
+                    ],
+
+                    answer: "."
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to return a value from a function?",
+
+                    options: [
+                        "send",
+                        "return",
+                        "back",
+                        "value"
+                    ],
+
+                    answer: "return"
+                }
+
+            ],
+
+
+            "C++": [
+
+                {
+                    question:
+                        "Which symbol is used for single-line comments in C++?",
+
+                    options: [
+                        "#",
+                        "//",
+                        "<!-- -->",
+                        "**"
+                    ],
+
+                    answer: "//"
+                },
+
+
+                {
+                    question:
+                        "Which keyword is used to create a class?",
+
+                    options: [
+                        "class",
+                        "object",
+                        "struct",
+                        "define"
+                    ],
+
+                    answer: "class"
+                },
+
+
+                {
+                    question:
+                        "Which feature allows the same function name with different parameters?",
+
+                    options: [
+                        "Inheritance",
+                        "Overloading",
+                        "Encapsulation",
+                        "Abstraction"
+                    ],
+
+                    answer: "Overloading"
+                },
+
+
+                {
+                    question:
+                        "Which operator is used to allocate memory dynamically?",
+
+                    options: [
+                        "malloc",
+                        "alloc",
+                        "new",
+                        "create"
+                    ],
+
+                    answer: "new"
+                },
+
+
+                {
+                    question:
+                        "Which operator is used to release memory allocated using new?",
+
+                    options: [
+                        "free",
+                        "delete",
+                        "remove",
+                        "clear"
+                    ],
+
+                    answer: "delete"
+                },
+
+
+                {
+                    question:
+                        "Which header is commonly used for input and output in C++?",
+
+                    options: [
+                        "stdio.h",
+                        "iostream",
+                        "input.h",
+                        "stream.h"
+                    ],
+
+                    answer: "iostream"
+                },
+
+
+                {
+                    question:
+                        "Which object is commonly used for output in C++?",
+
+                    options: [
+                        "cin",
+                        "cout",
+                        "print",
+                        "output"
+                    ],
+
+                    answer: "cout"
+                },
+
+
+                {
+                    question:
+                        "Which object is commonly used for input in C++?",
+
+                    options: [
+                        "cin",
+                        "cout",
+                        "scan",
+                        "input"
+                    ],
+
+                    answer: "cin"
+                },
+
+
+                {
+                    question:
+                        "Which concept hides internal implementation details?",
+
+                    options: [
+                        "Abstraction",
+                        "Inheritance",
+                        "Overloading",
+                        "Compilation"
+                    ],
+
+                    answer: "Abstraction"
+                },
+
+
+                {
+                    question:
+                        "Which feature allows a derived class to use properties of a base class?",
+
+                    options: [
+                        "Polymorphism",
+                        "Inheritance",
+                        "Encapsulation",
+                        "Abstraction"
+                    ],
+
+                    answer: "Inheritance"
+                }
+
+            ]
+
+        };
+
+
+        /* ==========================================
+           GET QUESTIONS
+        ========================================== */
+
+        const currentQuestions =
+            questions[selectedLanguage];
+
+
+        if (!currentQuestions) {
+
+            window.location.href =
+                "language.html";
+
+            return;
+
+        }
+
+
+        const questionsContainer =
+            document.getElementById(
+                "questionsContainer"
+            );
+
+
+        /* ==========================================
+           DISPLAY QUESTIONS
+        ========================================== */
+
+        currentQuestions.forEach(
+            function (item, index) {
+
+
+                const questionCard =
+                    document.createElement("div");
+
+
+                questionCard.className =
+                    "question-card";
+
+
+                let optionsHTML = "";
+
+
+                item.options.forEach(
+                    function (option) {
+
+                        optionsHTML += `
+
+                            <label class="option-label">
+
+                                <input
+                                    type="radio"
+                                    name="question${index}"
+                                    value="${option}"
+                                    required
+                                >
+
+                                <span>
+                                    ${option}
+                                </span>
+
+                            </label>
+
+                        `;
+
+                    }
+                );
+
+
+                questionCard.innerHTML = `
+
+                    <div class="question-number">
+
+                        Question ${index + 1}
+
+                    </div>
+
+                    <h3>
+
+                        ${item.question}
+
+                    </h3>
+
+                    <div class="options">
+
+                        ${optionsHTML}
+
+                    </div>
+
+                `;
+
+
+                questionsContainer.appendChild(
+                    questionCard
+                );
+
+            }
+        );
+
+
+        /* ==========================================
+           SUBMIT TEST
+        ========================================== */
+
+        document
+            .getElementById("skillTestForm")
+            .addEventListener(
+                "submit",
+                function (event) {
+
+
+                    event.preventDefault();
+
+
+                    let score = 0;
+
+
+                    currentQuestions.forEach(
+                        function (item, index) {
+
+
+                            const selected =
+                                document.querySelector(
+                                    `input[name="question${index}"]:checked`
+                                );
+
+
+                            if (
+                                selected &&
+                                selected.value === item.answer
+                            ) {
+
+                                score++;
+
+                            }
+
+                        }
+                    );
+
+
+                    const total =
+                        currentQuestions.length;
+
+
+                    const percentage =
+                        Math.round(
+                            (score / total) * 100
+                        );
+
+
+                    let level;
+
+
+                    if (percentage >= 80) {
+
+                        level = "Advanced";
+
+                    } else if (percentage >= 50) {
+
+                        level = "Intermediate";
+
+                    } else {
+
+                        level = "Beginner";
+
+                    }
+
+
+                    let recommendation;
+
+
+                    if (level === "Advanced") {
+
+                        recommendation =
+                            "Excellent performance! Keep practicing advanced concepts and problem-solving.";
+
+                    } else if (level === "Intermediate") {
+
+                        recommendation =
+                            "Good performance! Practice more programming problems to improve your skills.";
+
+                    } else {
+
+                        recommendation =
+                            "Keep learning the basics and practice simple programming problems regularly.";
+
+                    }
+
+
+                    const resultData = {
+
+                        score: score,
+
+                        total: total,
+
+                        percentage: percentage,
+
+                        level: level,
+
+                        recommendation: recommendation,
+
+                        language: selectedLanguage
+
+                    };
+
+
+                    localStorage.setItem(
+                        "resultData",
+                        JSON.stringify(resultData)
+                    );
+
+
+                    window.location.href =
+                        "result.html";
+
+                }
+            );
+
+
+    });
+
+</script>
+```
+
+</body>
+
+</html>
